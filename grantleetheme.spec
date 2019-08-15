@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : grantleetheme
-Version  : 19.04.3
-Release  : 13
-URL      : https://download.kde.org/stable/applications/19.04.3/src/grantleetheme-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/grantleetheme-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/grantleetheme-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 14
+URL      : https://download.kde.org/stable/applications/19.08.0/src/grantleetheme-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/grantleetheme-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/grantleetheme-19.08.0.tar.xz.sig
 Summary  : Library for Grantlee theming support
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -75,16 +75,17 @@ locales components for the grantleetheme package.
 
 
 %prep
-%setup -q -n grantleetheme-19.04.3
+%setup -q -n grantleetheme-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562855172
+export SOURCE_DATE_EPOCH=1565891797
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -98,7 +99,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562855172
+export SOURCE_DATE_EPOCH=1565891797
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grantleetheme
 cp COPYING %{buildroot}/usr/share/package-licenses/grantleetheme/COPYING
@@ -113,21 +114,24 @@ popd
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/xdg/grantleetheme.categories
-/usr/share/xdg/grantleetheme.renamecategories
+/usr/share/qlogging-categories5/grantleetheme.categories
+/usr/share/qlogging-categories5/grantleetheme.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/KF5/GrantleeTheme/GenericFormatter
 /usr/include/KF5/GrantleeTheme/GrantleeKi18nLocalizer
 /usr/include/KF5/GrantleeTheme/GrantleeTheme
 /usr/include/KF5/GrantleeTheme/GrantleeThemeEngine
 /usr/include/KF5/GrantleeTheme/GrantleeThemeManager
 /usr/include/KF5/GrantleeTheme/QtResourceTemplateLoader
+/usr/include/KF5/grantleetheme/GenericFormatter
 /usr/include/KF5/grantleetheme/GrantleeKi18nLocalizer
 /usr/include/KF5/grantleetheme/GrantleeTheme
 /usr/include/KF5/grantleetheme/GrantleeThemeEngine
 /usr/include/KF5/grantleetheme/GrantleeThemeManager
 /usr/include/KF5/grantleetheme/QtResourceTemplateLoader
+/usr/include/KF5/grantleetheme/genericformatter.h
 /usr/include/KF5/grantleetheme/grantleeki18nlocalizer.h
 /usr/include/KF5/grantleetheme/grantleetheme.h
 /usr/include/KF5/grantleetheme/grantleetheme_export.h
@@ -146,7 +150,7 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.1/kde_grantlee_plugin.so
 /usr/lib64/libKF5GrantleeTheme.so.5
-/usr/lib64/libKF5GrantleeTheme.so.5.11.3
+/usr/lib64/libKF5GrantleeTheme.so.5.12.0
 
 %files license
 %defattr(0644,root,root,0755)
