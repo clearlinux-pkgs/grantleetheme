@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : grantleetheme
-Version  : 19.08.1
-Release  : 15
-URL      : https://download.kde.org/stable/applications/19.08.1/src/grantleetheme-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/grantleetheme-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/grantleetheme-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 16
+URL      : https://download.kde.org/stable/applications/19.08.2/src/grantleetheme-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/grantleetheme-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/grantleetheme-19.08.2.tar.xz.sig
 Summary  : Library for Grantlee theming support
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -75,14 +75,14 @@ locales components for the grantleetheme package.
 
 
 %prep
-%setup -q -n grantleetheme-19.08.1
+%setup -q -n grantleetheme-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567693740
+export SOURCE_DATE_EPOCH=1570734431
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -95,11 +95,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567693740
+export SOURCE_DATE_EPOCH=1570734431
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grantleetheme
 cp COPYING %{buildroot}/usr/share/package-licenses/grantleetheme/COPYING
@@ -150,7 +150,7 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.1/kde_grantlee_plugin.so
 /usr/lib64/libKF5GrantleeTheme.so.5
-/usr/lib64/libKF5GrantleeTheme.so.5.12.1
+/usr/lib64/libKF5GrantleeTheme.so.5.12.2
 
 %files license
 %defattr(0644,root,root,0755)
