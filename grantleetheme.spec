@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : grantleetheme
-Version  : 20.04.1
-Release  : 24
-URL      : https://download.kde.org/stable/release-service/20.04.1/src/grantleetheme-20.04.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.1/src/grantleetheme-20.04.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.1/src/grantleetheme-20.04.1.tar.xz.sig
+Version  : 20.04.2
+Release  : 25
+URL      : https://download.kde.org/stable/release-service/20.04.2/src/grantleetheme-20.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.2/src/grantleetheme-20.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.2/src/grantleetheme-20.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -79,15 +79,15 @@ locales components for the grantleetheme package.
 
 
 %prep
-%setup -q -n grantleetheme-20.04.1
-cd %{_builddir}/grantleetheme-20.04.1
+%setup -q -n grantleetheme-20.04.2
+cd %{_builddir}/grantleetheme-20.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589845509
+export SOURCE_DATE_EPOCH=1591903709
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -103,11 +103,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1589845509
+export SOURCE_DATE_EPOCH=1591903709
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grantleetheme
-cp %{_builddir}/grantleetheme-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/grantleetheme/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/grantleetheme-20.04.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/grantleetheme/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/grantleetheme-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/grantleetheme/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/grantleetheme-20.04.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/grantleetheme/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -154,7 +154,7 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.2/kde_grantlee_plugin.so
 /usr/lib64/libKF5GrantleeTheme.so.5
-/usr/lib64/libKF5GrantleeTheme.so.5.14.1
+/usr/lib64/libKF5GrantleeTheme.so.5.14.2
 
 %files license
 %defattr(0644,root,root,0755)
