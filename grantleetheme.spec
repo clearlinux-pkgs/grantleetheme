@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : grantleetheme
-Version  : 20.08.3
-Release  : 28
-URL      : https://download.kde.org/stable/release-service/20.08.3/src/grantleetheme-20.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.08.3/src/grantleetheme-20.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.08.3/src/grantleetheme-20.08.3.tar.xz.sig
+Version  : 20.12.0
+Release  : 29
+URL      : https://download.kde.org/stable/release-service/20.12.0/src/grantleetheme-20.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.12.0/src/grantleetheme-20.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.12.0/src/grantleetheme-20.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : GPL-2.0 LGPL-2.0 LGPL-2.1
 Requires: grantleetheme-data = %{version}-%{release}
 Requires: grantleetheme-lib = %{version}-%{release}
 Requires: grantleetheme-license = %{version}-%{release}
@@ -79,15 +79,15 @@ locales components for the grantleetheme package.
 
 
 %prep
-%setup -q -n grantleetheme-20.08.3
-cd %{_builddir}/grantleetheme-20.08.3
+%setup -q -n grantleetheme-20.12.0
+cd %{_builddir}/grantleetheme-20.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604593242
+export SOURCE_DATE_EPOCH=1607706258
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -103,11 +103,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604593242
+export SOURCE_DATE_EPOCH=1607706258
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grantleetheme
-cp %{_builddir}/grantleetheme-20.08.3/COPYING %{buildroot}/usr/share/package-licenses/grantleetheme/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/grantleetheme-20.08.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/grantleetheme/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/grantleetheme-20.12.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/grantleetheme-20.12.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/grantleetheme-20.12.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/6f1f675aa5f6a2bbaa573b8343044b166be28399
 pushd clr-build
 %make_install
 popd
@@ -154,12 +155,13 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.2/kde_grantlee_plugin.so
 /usr/lib64/libKF5GrantleeTheme.so.5
-/usr/lib64/libKF5GrantleeTheme.so.5.15.3
+/usr/lib64/libKF5GrantleeTheme.so.5.16.0
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/grantleetheme/7c203dee3a03037da436df03c4b25b659c073976
-/usr/share/package-licenses/grantleetheme/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+/usr/share/package-licenses/grantleetheme/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/grantleetheme/6f1f675aa5f6a2bbaa573b8343044b166be28399
+/usr/share/package-licenses/grantleetheme/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
 %files locales -f libgrantleetheme.lang
 %defattr(-,root,root,-)
