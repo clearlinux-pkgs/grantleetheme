@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : grantleetheme
-Version  : 21.12.3
-Release  : 41
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/grantleetheme-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/grantleetheme-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/grantleetheme-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 42
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/grantleetheme-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/grantleetheme-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/grantleetheme-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1
@@ -25,12 +25,9 @@ BuildRequires : kguiaddons-dev
 BuildRequires : ki18n-dev
 BuildRequires : kiconthemes-dev
 BuildRequires : knewstuff-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
-# GrantleeTheme #
-GrantleeTheme library provides a class for loading theme packages containing
-set of templates.
+SPDX-License-Identifier: CC0-1.0
 
 %package data
 Summary: data components for the grantleetheme package.
@@ -79,15 +76,15 @@ locales components for the grantleetheme package.
 
 
 %prep
-%setup -q -n grantleetheme-21.12.3
-cd %{_builddir}/grantleetheme-21.12.3
+%setup -q -n grantleetheme-22.04.0
+cd %{_builddir}/grantleetheme-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646534759
+export SOURCE_DATE_EPOCH=1650669419
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -103,15 +100,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646534759
+export SOURCE_DATE_EPOCH=1650669419
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grantleetheme
-cp %{_builddir}/grantleetheme-21.12.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/grantleetheme/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/grantleetheme-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/grantleetheme/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/grantleetheme-21.12.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/grantleetheme-21.12.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/grantleetheme-21.12.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/grantleetheme-21.12.3/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/grantleetheme/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/grantleetheme-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/grantleetheme/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/grantleetheme-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/grantleetheme/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/grantleetheme-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/grantleetheme-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/grantleetheme-22.04.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/grantleetheme-22.04.0/README.md.license %{buildroot}/usr/share/package-licenses/grantleetheme/cadc9e08cb956c041f87922de84b9206d9bbffb2
+cp %{_builddir}/grantleetheme-22.04.0/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/grantleetheme/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -127,26 +125,26 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/KF5/GrantleeTheme/GenericFormatter
-/usr/include/KF5/GrantleeTheme/GrantleeKi18nLocalizer
-/usr/include/KF5/GrantleeTheme/GrantleeTheme
-/usr/include/KF5/GrantleeTheme/GrantleeThemeEngine
-/usr/include/KF5/GrantleeTheme/GrantleeThemeManager
-/usr/include/KF5/GrantleeTheme/QtResourceTemplateLoader
-/usr/include/KF5/grantleetheme/GenericFormatter
-/usr/include/KF5/grantleetheme/GrantleeKi18nLocalizer
-/usr/include/KF5/grantleetheme/GrantleeTheme
-/usr/include/KF5/grantleetheme/GrantleeThemeEngine
-/usr/include/KF5/grantleetheme/GrantleeThemeManager
-/usr/include/KF5/grantleetheme/QtResourceTemplateLoader
-/usr/include/KF5/grantleetheme/genericformatter.h
-/usr/include/KF5/grantleetheme/grantleeki18nlocalizer.h
-/usr/include/KF5/grantleetheme/grantleetheme.h
-/usr/include/KF5/grantleetheme/grantleetheme_export.h
-/usr/include/KF5/grantleetheme/grantleethemeengine.h
-/usr/include/KF5/grantleetheme/grantleethememanager.h
-/usr/include/KF5/grantleetheme/qtresourcetemplateloader.h
-/usr/include/KF5/grantleetheme_version.h
+/usr/include/KF5/GrantleeTheme/GrantleeTheme/GenericFormatter
+/usr/include/KF5/GrantleeTheme/GrantleeTheme/GrantleeKi18nLocalizer
+/usr/include/KF5/GrantleeTheme/GrantleeTheme/GrantleeTheme
+/usr/include/KF5/GrantleeTheme/GrantleeTheme/GrantleeThemeEngine
+/usr/include/KF5/GrantleeTheme/GrantleeTheme/GrantleeThemeManager
+/usr/include/KF5/GrantleeTheme/GrantleeTheme/QtResourceTemplateLoader
+/usr/include/KF5/GrantleeTheme/grantleetheme/GenericFormatter
+/usr/include/KF5/GrantleeTheme/grantleetheme/GrantleeKi18nLocalizer
+/usr/include/KF5/GrantleeTheme/grantleetheme/GrantleeTheme
+/usr/include/KF5/GrantleeTheme/grantleetheme/GrantleeThemeEngine
+/usr/include/KF5/GrantleeTheme/grantleetheme/GrantleeThemeManager
+/usr/include/KF5/GrantleeTheme/grantleetheme/QtResourceTemplateLoader
+/usr/include/KF5/GrantleeTheme/grantleetheme/genericformatter.h
+/usr/include/KF5/GrantleeTheme/grantleetheme/grantleeki18nlocalizer.h
+/usr/include/KF5/GrantleeTheme/grantleetheme/grantleetheme.h
+/usr/include/KF5/GrantleeTheme/grantleetheme/grantleetheme_export.h
+/usr/include/KF5/GrantleeTheme/grantleetheme/grantleethemeengine.h
+/usr/include/KF5/GrantleeTheme/grantleetheme/grantleethememanager.h
+/usr/include/KF5/GrantleeTheme/grantleetheme/qtresourcetemplateloader.h
+/usr/include/KF5/GrantleeTheme/grantleetheme_version.h
 /usr/lib64/cmake/KF5GrantleeTheme/KF5GrantleeThemeConfig.cmake
 /usr/lib64/cmake/KF5GrantleeTheme/KF5GrantleeThemeConfigVersion.cmake
 /usr/lib64/cmake/KF5GrantleeTheme/KF5GrantleeThemeTargets-relwithdebinfo.cmake
@@ -158,15 +156,16 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.2/kde_grantlee_plugin.so
 /usr/lib64/libKF5GrantleeTheme.so.5
-/usr/lib64/libKF5GrantleeTheme.so.5.19.3
+/usr/lib64/libKF5GrantleeTheme.so.5.20.0
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/grantleetheme/20079e8f79713dce80ab09774505773c926afa2a
-/usr/share/package-licenses/grantleetheme/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/grantleetheme/6f1f675aa5f6a2bbaa573b8343044b166be28399
 /usr/share/package-licenses/grantleetheme/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/grantleetheme/8287b608d3fa40ef401339fd907ca1260c964123
+/usr/share/package-licenses/grantleetheme/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/grantleetheme/cadc9e08cb956c041f87922de84b9206d9bbffb2
 /usr/share/package-licenses/grantleetheme/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
 %files locales -f libgrantleetheme.lang
