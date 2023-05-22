@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : grantleetheme
-Version  : 23.04.0
-Release  : 55
-URL      : https://download.kde.org/stable/release-service/23.04.0/src/grantleetheme-23.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.0/src/grantleetheme-23.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.0/src/grantleetheme-23.04.0.tar.xz.sig
+Version  : 23.04.1
+Release  : 56
+URL      : https://download.kde.org/stable/release-service/23.04.1/src/grantleetheme-23.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.04.1/src/grantleetheme-23.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.04.1/src/grantleetheme-23.04.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GPL-2.0 LGPL-2.0 LGPL-2.1
@@ -76,31 +76,48 @@ locales components for the grantleetheme package.
 
 
 %prep
-%setup -q -n grantleetheme-23.04.0
-cd %{_builddir}/grantleetheme-23.04.0
+%setup -q -n grantleetheme-23.04.1
+cd %{_builddir}/grantleetheme-23.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682096637
+export SOURCE_DATE_EPOCH=1684794783
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682096637
+export SOURCE_DATE_EPOCH=1684794783
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grantleetheme
 cp %{_builddir}/grantleetheme-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/grantleetheme/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -110,10 +127,14 @@ cp %{_builddir}/grantleetheme-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildr
 cp %{_builddir}/grantleetheme-%{version}/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/grantleetheme/6f1f675aa5f6a2bbaa573b8343044b166be28399 || :
 cp %{_builddir}/grantleetheme-%{version}/README.md.license %{buildroot}/usr/share/package-licenses/grantleetheme/cadc9e08cb956c041f87922de84b9206d9bbffb2 || :
 cp %{_builddir}/grantleetheme-%{version}/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/grantleetheme/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
 %find_lang libgrantleetheme
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -125,6 +146,7 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libKPim5GrantleeTheme.so
 /usr/include/KPim5/GrantleeTheme/GrantleeTheme/GenericFormatter
 /usr/include/KPim5/GrantleeTheme/GrantleeTheme/GrantleeKi18nLocalizer
 /usr/include/KPim5/GrantleeTheme/GrantleeTheme/GrantleeTheme
@@ -158,9 +180,12 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/grantlee/5.3/kde_grantlee_plugin.so
+/V3/usr/lib64/libKPim5GrantleeTheme.so.5
+/V3/usr/lib64/libKPim5GrantleeTheme.so.5.23.1
 /usr/lib64/grantlee/5.3/kde_grantlee_plugin.so
 /usr/lib64/libKPim5GrantleeTheme.so.5
-/usr/lib64/libKPim5GrantleeTheme.so.5.23.0
+/usr/lib64/libKPim5GrantleeTheme.so.5.23.1
 
 %files license
 %defattr(0644,root,root,0755)
